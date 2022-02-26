@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link href="../css/base.css" rel="stylesheet" type="text/css">
+    <link href="../css/mui.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/animate.css" rel="stylesheet" type="text/css">
+    <link href="../css/swiper.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/hourse.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/bottom.css">
+    <link rel="stylesheet" href="../css/imgzoom.css">
+    <link rel="stylesheet" href="../css/load.css">
+    <script src="../js/rem.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/mui.zoom.js"></script>
+    <script src="../js/mui.previewimage.js"></script>
+    <script src="../js/sonic.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+    <!--3djs-->
+    <script src="../js/3d/three.min.js"></script>
+    <script src="../js/3d/lzf.js"></script>
+    <script src="../js/3d/sourceload.js"></script>
+    <script src="../js/3d/framework3d.js"></script>
+    <!--<script src="../js/3d/main.js"></script>-->
+    <style>
+        .swiper1 {
+            width: 100%;
+            /*margin-top: 0.9rem;*/
+            /*height: 100%;*/
+        }
+
+        .swiper-pagination {
+            color: #ffffff;
+        }
+
+        .swiper1 .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper2 {
+            width: 100%;
+            /*height:7.5rem;*/
+            /*margin-top: 0.9rem;*/
+            /*height: 100%;*/
+        }
+
+        .swiper2 .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #000000;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiperImg {
+            width: 100%;
+            /*height:6rem;*/
+            /*height:100%;*/
+        }
+
+        .load {
+            height: 6rem !important;
+        }
+
+        .mzsm {
+            padding: 0 0.2rem;
+            width: 90%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: #fff;
+            font-size: 0.12rem;
+            display: none;
+        }
+
+        .sildeTit h3 {
+            width: 2rem;
+            overflow: hidden;
+            font-size: 0.26rem;
+            font-weight: bold;
+            line-height: 0.65rem;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tsts {
+            float: left;
+            width: 100%;
+            padding: 0 0.2rem;
+            background: #fff;
+            margin-top: 0.17rem;
+            font-size: 0.24rem;
+            font-family: PingFangSC-Regular;
+            display: none;
+        }
+    </style>
+    <title></title>
+</head>
+
+<body>
+    <div class="load">
+
+        <div id="in"></div>
+        <!--<img src="img/gif.gif" style="width:4rem;height:3rem;position: absolute;left:50%;margin-left:-2rem;margin-top:1.8rem;">-->
+        <span class="loadBox"></span>
+    </div>
+    <div class="hourseBox">
+
+        <!--<img src="../img/h-5-backgroundlower.png" class="pmtImg animated fadeInDownBig" data-preview-src="" data-preview-group="1"/>-->
+        <!--<div class="img3D" style="position: relative;">
+				
+				<img src="../img/big_view.png" class="hourseImg"/>
+				<p class="pmt">					
+					<img src="../img/h-5-plan.png"/>
+					<span>平面图</span>
+				</p>
+			</div>-->
+        <div class="swiper-container swiper2">
+            <div class="swiper-wrapper">
+                <!--<div class="swiper-slide">
+		            	<img src="../img/big_view.png" class="swiperImg" data-preview-src="" data-preview-group="1" data-content="这样就听好"/>
+		            </div>
+		            <div class="swiper-slide">
+		            	<img src="../img/big_viewL.png" class="swiperImg" data-preview-src="" data-preview-group="1" data-content="不行啊"/>
+		            </div>		            -->
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+
+        </div>
+        <div id="big3dScene" class="big3dScene">
+            <canvas id="webglCanvas" width="1000" height="800"></canvas>
+            <p class='mzsm'>本资料不作为合同要约,一切以政府有关部门最后批准的文件、图则及商品房买卖合同的约定为准</p>
+            <img src="../img/h-5-plan.png" class="imgBtn">
+            <P class="hoursetypeBtn"></P>
+            <div class="imgBg animated fadeInDown">
+                <img src="../img/close.png" class="closeImg">
+                <img src="" class="pmImg" data-preview-src="" data-preview-group="1" />
+            </div>
+        </div>
+        <div class="projectName">
+            <span>楼盘：</span>
+            <span style="color:#00a0e9;font-size:0.25rem;">(点击查看详情)</span>
+        </div>
+        <div class="hourseDetails">
+            <p class="hourseName"><span class="a1">A1户型</span><span class="hourseNum">三室两厅一卫</span></p>
+            <p class="projectp" style="float:left;width:100%;"><span class="projectprice"></span><span class="sfd">算房贷</span></p>
+            <!--<span class="pictrue">相册(123)</span>-->
+            <p class="pcommon" style="margin-top:0.2rem">
+                <span class="s1">面积 :</span>
+                <span class="mj">99㎡</span>
+            </p>
+            <p class="pcommon">
+                <span class="s1">首付 :</span>
+                <span class="sf">待定</span>
+            </p>
+            <p class="pcommon">
+                <span class="s1">类型 :</span>
+                <span class="lx">平层</span>
+            </p>
+            <div class="houseBtn">
+                <p class="jzxg" style="display: none;">
+                    <img src="../img/h-5-hardcover.png" />
+                    <span>精装效果</span>
+                </p>
+                <p class="vrmy" style="display: none;">
+                    <img src="../img/h-5-vrroam.png" />
+                    <span>VR漫游</span>
+                </p>
+
+            </div>
+        </div>
+        <div class='tsts'>
+            <div class="hourseMore">
+                <img src="../img/h-5-medical@2x.png" style="width:0.32rem;float:left;" />
+                <span class="hx">特别提示：</span>
+            </div>
+            <div class='hourseType1' style='width:100%;float:left;padding:0.2rem 0'>
+
+            </div>
+        </div>
+        <div class="hourseType">
+            <div class="hourseMore">
+                <img src="../img/h-5-housetype-2@2x.png" style="width:0.32rem;float:left;" />
+                <span class="hx">户型展示</span>
+            </div>
+            <div class="swiper-container swiper1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="sildeTit">
+                            <h3>户型名称</h3>
+                            <!--<img src="../img/huxing.png" style="width:3.15rem"/>-->
+                            <p class="houCont"><span class="hourseNumber">4室2厅2卫</span><span class="hourseArea">117㎡</span></p>
+
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sildeTit">
+                            <h3>户型名称</h3>
+                            <!--<img src="../img/huxing.png" style="width:3.15rem"/>-->
+                            <p class="houCont"><span class="hourseNumber">4室2厅2卫</span><span class="hourseArea">117㎡</span></p>
+
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sildeTit">
+                            <h3>户型名称</h3>
+                            <!--<img src="../img/huxing.png" style="width:3.15rem"/>-->
+                            <p class="houCont"><span class="hourseNumber">4室2厅2卫</span><span class="hourseArea">117㎡</span></p>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Add Pagination -->
+
+            </div>
+        </div>
+
+        <div class="wykfReg animated fadeInDownBig" style="display:none;">
+            <img src="../img/h-5-close@2x.png" class="closeBtn" />
+            <h3 class="wykfTit">请留下联系方式顾问会主动与您联系</h3>
+            <p class="wykfName" style="margin-top:0.5rem;"><span style="letter-spacing: 0.08rem;">姓名</span><input type="text" placeholder="请输入姓名" class="userName" /></p>
+            <p class="wykfName" style="margin-top:0.2rem;"><span>手机号</span><input type="number" placeholder="请输入手机号" class="phoneNumber" oninput="if(value.length>11)value=value.slice(0,11)" /></p>
+            <p class="yzm" style="margin-top:0.2rem;"><span>验证码</span><input placeholder="请输入验证码" class="yzmCode" /><em class="getCode">获取验证码</em></p>
+            <div class="error_text"></div>
+            <span class="sureBtn">确定</span>
+        </div>
+        <div class="bg"></div>
+        <div class="mfSuccess">
+            <p style="margin-top:0.3rem">预约看房成功！</p>
+            <p>顾问会主动与您联系</p>
+        </div>
+    </div>
+    <div class="bottomBtn">
+        <ul>
+            <li class="wykf animated fadeInLeftBig">
+                <img src="../img/h-5-showing@2x.png" />
+                <a>我要看房</a>
+            </li>
+            <li class="lxgw animated fadeInLeftBig">
+                <img src="../img/h-5-contactconsultant@2x.png" />
+                <a class="contact" href="tel:">联系顾问</a>
+            </li>
+            <li class="xzlp animated fadeInRightBig">
+                <img src="../img/h-5-download@2x.png" />
+                <a>下载楼盘</a>
+            </li>
+            <li class="wyzq animated fadeInRightBig" style="display:none">
+                <img src="../img/h-5-agent@2x.png" />
+                <a>我要赚钱</a>
+            </li>
+        </ul>
+    </div>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script src="../js/zhuge.js"></script>
+    <script src="../js/bottom.js"></script>
+    <script src="../js/load.js"></script>
+    <script src="../js/wxShareH.js"></script>
+    <script src="../js/eventcount.js"></script>
+    <script src="../js/mobile-detect.js"></script>
+    <script src="../js/regEvent.js"></script>
+    <script>
+        var shareInfo = ""; /*eyJwcm9qZWN0SWQiOiIyMDE3MDgyNDAwMDEiLCJ1c2VyUm9sZUlkIjoiMiIsInR5cGVJZCI6IjIwMTcwODI0MDAwMSIsInR5cGUiOiIxIiwiYXBwVHlwZSI6IjkifQ==*/
+        var modeId = "";
+        var userSource = 2;
+        var modeName = "";
+        var pmtImg = "";
+        var pmtmodeId = "";
+        var title = "";
+        var search = location.search;
+        var reg = /^.*shareInfo=(.+)$/; /*分享信息*/
+        var regPro = /^.*modeId=(.+)$/; /*项目id*/
+        var params = search.split("&");
+        var p_reg = new RegExp("^[0-9]*$");
+        for (var i = 0; i < params.length; i++) {
+            var info = reg.exec(params[i]);
+            if (info != null) {
+                shareInfo = info[1];
+            }
+            var infoPro = regPro.exec(params[i]);
+            if (infoPro != null) {
+                if (p_reg.test(infoPro[1]))
+                    modeId = infoPro[1];
+
+            }
+        }
+        console.log(shareInfo)
+        console.log(modeId)
+        var projectId = ""
+        var myCanvas = document.getElementById("webglCanvas");
+        mui.previewImage();
+
+        $(".sfd").click(function() {
+            zhuge.track('查看房贷计算器')
+            eventObj('查看房贷计算器')
+            location.href = "The_mortgage_calculator.html";
+        })
+        $(".pmt").click(function() {
+            $(".pmtImg").show()
+            $(".bg").show()
+        })
+        document.onreadystatechange = function() {
+
+            if (document.readyState == "complete") {
+                modeListClick()
+            }
+        }
+
+        function modeListClick() {
+            $.get(config + "share/qryMode", {
+                "modeId": modeId,
+                "shareInfo": shareInfo,
+
+            }, function(data) {
+                console.log(data)
+                if (data.operFlag == 1001) {
+                    //					window.location.href="noLink.html?shareInfo="+shareInfo;
+                }
+                if (data.operFlag == 1000 && data.data) {
+                    setTimeout(function() {
+                        eventObj('查看户型详情', {
+                            '项目名称': regString(data.data.proName),
+                            '户型 名称': regString(data.data.modeName),
+                            '居室类型': regString(data.data.modeFormat),
+                            '户型模型类型': regString(data.data.modeType),
+                            '户型价格': regString(data.data.averagePrice),
+                            '面积': regString(data.data.area),
+                            '首付': regString(data.data.firstPay),
+                            '类型': regString(data.data.modeType),
+                            "projectId": projectId,
+                            "sysType": 3,
+                            "projectName": $("title").html(),
+                            "userRoleId": eventuserRoleId,
+                        })
+                    }, 500)
+
+                    //				   zhuge.track('查看户详情',{
+                    //				    '分享人角色' :data.shareBean.userRoleId,
+                    //				    '项目名称':regString(data.data.proName),				  
+                    //				    '户型 名称':regString(data.data.modeName),
+                    //				    '居室类型':regString(data.data.modeFormat),
+                    //				    '户型模型类型':regString(data.data.modeType),
+                    //				    '户型价格':regString(data.data.averagePrice),
+                    //				    '面积':regString(data.data.area),
+                    //				    '首付':regString(data.data.firstPay),
+                    //				    '类型':regString(data.data.modeType)				    
+                    //					});	
+                    projectId = data.data.projectId
+                    eventRoleId = data.lxrData.roleId;
+                    eventuserRoleId = data.lxrData.userRoleId;
+                    //				   if(projectId==201700000244){/*鸿悦公馆*/						
+                    //						$(".wyzq").show()
+                    //					}
+                    if (projectId == 201700000246) { /*城泰枫华天成*/
+                        $(".wyzq").show()
+                    } else if (projectId == 201700000249) { /*新力铂园*/
+                        $(".wyzq").show()
+                    } else if (projectId == 201700000251) { /*新力范*/
+                        $(".wyzq").show()
+                    } else if (projectId == 201700000247) { /*汇仁自在天地*/
+                        $(".wyzq").show()
+                    } else if (projectId == 201700000250) { /*意环公馆*/
+                        $(".wyzq").show()
+                    } else if (projectId == 201700000255) { /*新力公园一号*/
+                        $(".wyzq").show()
+                    } else if (projectId == 201800000656) { /*绿城·蘭园*/
+                        $(".mzsm").show()
+                        $(".tsts").show()
+                        if (modeId == 2018100900000003) {
+                            $(".hourseType1").html("1.精装修房的材料和设备的品牌、产地、规格、数量等，有约定的按约定执行，没有约定的由出卖人根据买受人所选购的户型最终确定。如果已约定或确定的材料、设备、物品的品牌或型号在本合同履行中发生厂家停产或关闭的，出卖人告知买受人选择同种类同档次的其他品牌和型号。2.大理石、花岗石属于天然石材，不可避免地存在纹理和颜色的差别以及细微裂纹现象，且其接缝处会有所不同；木材亦是一种天然材料，存在纹理和颜色的差别，因此无法做到在选材及安装过程中保证其色泽和纹理的完全一致性，且会因气候的变化及使用环境的不同而存在外观改变的可能性。3.本户型为21#602装修示意图，仅供参考。以上信息仅作为绿城·南通蘭园项目交付标准参考。")
+                        } else {
+                            $(".hourseType1").html("1.精装修房的材料和设备的品牌、产地、规格、数量等，有约定的按约定执行，没有约定的由出卖人根据买受人所选购的户型最终确定。如果已约定或确定的材料、设备、物品的品牌或型号在本合同履行中发生厂家停产或关闭的，出卖人告知买受人选择同种类同档次的其他品牌和型号。2.大理石、花岗石属于天然石材，不可避免地存在纹理和颜色的差别以及细微裂纹现象，且其接缝处会有所不同；木材亦是一种天然材料，存在纹理和颜色的差别，因此无法做到在选材及安装过程中保证其色泽和纹理的完全一致性，且会因气候的变化及使用环境的不同而存在外观改变的可能性。3.本户型为23#602装修示意图，仅供参考。以上信息仅作为绿城·南通蘭园项目交付标准参考。")
+                        }
+
+                    }
+                    modeName = data.data.modeName;
+                    $("title").html(regString(data.data.proName))
+                    toShare(modeId, data.data.floorData[0].fileName)
+                    modeList(data.data.projectId)
+
+                    $(".projectName").click(function() {
+                        zhuge.track('返回楼盘详情')
+                        eventObj("返回楼盘详情")
+                        window.location.href = "bigview.html?shareInfo=" + shareInfo + "&projectId=" + projectId
+                    })
+
+                    if (data.data.mode3dFlag == 0) { /*沒有3d戶型*/
+
+                        showType()
+                    } else if (data.data.mode3dFlag == 1) { /*有3D戶型*/
+                        showType()
+                    }
+
+                    function showType() {
+                        if (data.data.homePageFlag == 1) { /*3d*/
+                            $(".vrmy").show()
+                            $(".swiper2").hide()
+                            //						 $(".img3D").hide()	
+                            $(".big3dScene").show()
+                            $(".load").show()
+
+                            Framework3d.Init(myCanvas);
+
+                            console.log(uniencode(modeName))
+                            Framework3d.LoadScene(url_unity + "static/data/mfyk/project/unity3d/" + projectId + "/Web/" + uniencode(modeName) + "")
+                            var imgFlag = true;
+                            pmtImg = data.data.floorData[0].fileName;
+                            pmtmodeId = data.data.floorData[0].modeId;
+                            $(".imgBtn").click(function() {
+
+                                if (imgFlag) {
+                                    zhuge.track('查看户型平面图')
+                                    eventObj("查看户型平面图")
+                                    $(".pmImg").attr("src", "" + config + "file/download.action?downloadId=" + pmtmodeId + "&downloadType=3&fileName=" + pmtImg + "&mediaType=2")
+                                    $(".imgBg").show();
+
+                                }
+
+                            })
+
+                            $(".closeImg").click(function() {
+                                $(".imgBg").fadeOut()
+                            })
+                            var myFlag = true
+                            $(".vrmy").click(function() {
+
+                                if (myFlag) {
+                                    Framework3d.MY()
+                                    zhuge.track('VR漫游')
+                                    eventObj('VR漫游')
+                                    $(".vrmy span").html("VR鸟瞰")
+                                    myFlag = false
+                                } else {
+
+                                    Framework3d.NK()
+                                    $(".vrmy span").html("VR漫游")
+                                    myFlag = true
+                                }
+                            })
+                            if (data.data.floorData) {
+                                if (data.data.floorData.length == 1) {
+                                    $(".hoursetypeBtn").html("")
+                                } else {
+                                    var str = "";
+                                    for (var i = 0; i < data.data.floorData.length; i++) {
+                                        str += "<span data-filename=" + data.data.floorData[i].fileName + "  data-modeid=" + data.data.floorData[i].modeId + ">" + data.data.floorData[i].modeFloor + "F" + "</span>"
+                                    }
+                                    $(".hoursetypeBtn").html(str)
+                                    $(".hoursetypeBtn span").click(function() {
+
+                                        pmtImg = $(this).data("filename")
+                                        pmtmodeId = $(this).data("modeid")
+                                        console.log(pmtmodeId)
+                                        console.log(pmtImg)
+                                        $(".hoursetypeBtn span").removeClass("btnActive")
+                                        $(this).addClass("btnActive")
+                                        var floorNum = $(this).html()
+                                        console.log(floorNum)
+                                        Framework3d.ChooseFloor(floorNum)
+                                    })
+                                }
+
+                            }
+                            //                       var btn09=document.getElementById("btn09");
+                            //						 var btn10=document.getElementById("btn10");
+                            //						 var btn11=document.getElementById("btn11");  
+                            //                        btn09.addEventListener("click",function(){Framework3d.ChooseFloor("1F")},false);
+                            //					      btn10.addEventListener("click",function(){Framework3d.ChooseFloor("2F")},false);
+                            //					      btn11.addEventListener("click",function(){
+                            //					    	Framework3d.NK()
+                            //					    	myFlag=true;
+                            //					    	$(".vrmy span").html("VR漫游")
+                            //					    	Framework3d.ChooseFloor("3F");
+                            //					    	},false);
+
+                        } else if (data.data.homePageFlag == 2) { /*720圖片*/
+
+                        } else if (data.data.homePageFlag == 3) { /*720鏈接*/
+                            $(".vrmy").hide()
+                        } else if (data.data.homePageFlag == 4) { /*輪播圖片*/
+
+                            $(".swiper2").show()
+                            $(".big3dScene").hide()
+                            $(".load").hide()
+                            $(".vrmy").hide()
+                            var img_pic = ""
+                            var str = "";
+                            if (modeId == "") modeId = data.data.floorData[0].modeId;
+                            for (var i = 0; i < data.data.modePics.length; i++) {
+                                img_pic = config + "file/download.action?downloadId=" + modeId + "&downloadType=8&fileName=" + data.data.modePics[i].fileName + "&mediaType=2";
+                                str += '<div class="swiper-slide"><img src="' + img_pic + '" class="swiperImg" data-preview-src="" data-preview-group="5" data-content="' + data.data.modePics[i].content + '"/></div>'
+                            }
+                            $(".swiper2 .swiper-wrapper").html(str)
+                            $(".swiperImg").each(function() {
+                                $(this).error(function() {
+                                    $(this).attr("src", "../img/h-5-no-details@2x.png");
+
+                                })
+                            })
+
+                            var swiper1 = new Swiper('.swiper2', {
+                                paginationClickable: true,
+                                pagination: '.swiper2 .swiper-pagination',
+                                paginationType: 'fraction',
+                                autoplay: 2500,
+                                speed: 1000
+                            });
+
+                        }
+                    }
+                    if (data.data.modeHardcover) {
+                        if (data.data.modeHardcover.length != 0) {
+                            var jzHref = "";
+                            jzHref = data.data.modeHardcover[0].url
+                            $(".jzxg").show()
+                            $(".jzxg").click(function() {
+                                eventObj("720°精装")
+                                window.location.href = jzHref;
+                            })
+                        }
+                    }
+                    $(".projectName span:nth-of-type(1)").html(regString(data.data.proName));
+                    $(".a1").html(regString(data.data.modeName));
+                    title = regString(data.data.modeName)
+                    $(".hourseNum").html(regString(data.data.modeFormat));
+                    $(".projectprice").html(regString(data.data.averagePrice));
+                    $(".mj").html(regString(data.data.area))
+                    $(".sf").html(regString(data.data.firstPay))
+
+                    if (regString(data.data.modeType) == 1) {
+                        $(".lx").html("平层")
+                    } else if (regString(data.data.modeType) == 2) {
+                        $(".lx").html("叠院")
+                    } else if (regString(data.data.modeType) == 3) {
+                        $(".lx").html("跃层")
+                    } else if (regString(data.data.modeType) == 4) {
+                        $(".lx").html("复式")
+                    } else if (regString(data.data.modeType) == 5) {
+                        $(".lx").html("联排")
+                    } else if (regString(data.data.modeType) == 6) {
+                        $(".lx").html("独栋")
+                    }
+                    var contact = "";
+                    if (data.lxrData && data.lxrData.comePhone != "" && data.lxrData.comePhone != null) {
+                        contact = data.lxrData.comePhone
+                    } else if (data.contact != "") {
+                        contact = data.contact
+                    }
+                    $(".contact").attr("href", "tel:" + contact + "")
+
+                }
+            })
+        }
+
+        function regString(str) { /*验证字段*/
+            if (str == "" || typeof(str) == "undefined" || str == null) {
+                return "暂无信息"
+            } else {
+                return str
+            }
+        }
+
+        function modeList(projectId) {
+            $.get(config + "project/modeList", {
+                "projectId": projectId,
+                "shareInfo": shareInfo
+            }, function(data) {
+                console.log(data)
+                if (data.operFlag == 1000) {
+                    if (data.data) { /*户型*/
+                        if (data.data.length != 0) {
+                            var str = "";
+                            var floorData = data.data
+                            for (var i = 0; i < floorData.length; i++) {
+                                str += '<div class="swiper-slide"><div class="sildeTit" id=' + floorData[i].modeId + ' data-modeName=' + floorData[i].modeName + ' data-fileName=' + floorData[i].fileName + '><h3>' + floorData[i].modeName + '</h3>' +
+                                    '<img data_modeId =' + floorData[i].modeId + '  src="' + config + 'file/download.action?downloadId=' + floorData[i].modeId + '&downloadType=3&fileName=' + floorData[i].fileName + '&mediaType=2"/>' +
+                                    '<p class="houCont"><span class="hourseNumber">' + floorData[i].modeFormat + '</span><span class="hourseArea">' + floorData[i].area + "㎡" + '</span></p></div></div>'
+                            }
+                            $(".swiper1 .swiper-wrapper").html(str)
+                            $(".sildeTit").each(function() {
+                                if ($(this).attr("id") == modeId) {
+                                    $(this).find("img").css({
+                                        "border": "solid 2px #EAC787"
+                                    })
+                                }
+                            })
+                            $(".sildeTit").click(function() {
+                                eventObj("户型点击")
+                                modeId = $(this).attr("id");
+                                pmtmodeId = $(this).attr("id");
+                                modeName = $(this).attr("data-modeName")
+                                pmtImg = $(this).attr("data-modeName")
+                                modeListClick()
+                                $('html, body, .content').animate({
+                                    scrollTop: 0
+                                }, 300);
+                            })
+                            var swiper = new Swiper('.swiper1', {
+                                slidesPerView: 3,
+                                paginationClickable: true,
+                                spaceBetween: 30,
+                                freeMode: true,
+                                freeModeMomentumRatio: 0.6,
+                                freeModeMomentumVelocityRatio: 0.5
+                            });
+                        }
+                    }
+                }
+
+            })
+        }
+
+        function uniencode(text) {
+            text = escape(text.toString()).replace(/\+/g, "%2B");
+            var matches = text.match(/(%([0-9A-F]{2}))/gi);
+            if (matches) {
+                for (var matchid = 0; matchid < matches.length; matchid++) {
+                    var code = matches[matchid].substring(1, 3);
+                    if (parseInt(code, 16) >= 128) {
+                        text = text.replace(matches[matchid], '%u00' + code);
+
+                    }
+                }
+            }
+            text = text.replace('%25', '0025');
+
+            return text.replace(/%u/g, "");
+        }
+    </script>
+</body>
+
+</html>
