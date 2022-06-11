@@ -24,7 +24,7 @@
     <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
     <!--3djs-->
-    <script src="../js/3d/three.min.js"></script>
+    <script src="../js/3d/three.min.js?xx=1"></script>
     <script src="../js/3d/lzf.js"></script>
     <script src="../js/3d/sourceload.js"></script>
     <script src="../js/3d/framework3d.js"></script>
@@ -344,11 +344,7 @@
         }
 
         function modeListClick() {
-            $.get(config + "share/qryMode", {
-                "modeId": modeId,
-                "shareInfo": shareInfo,
-
-            }, function(data) {
+            $.get(config + "share/qryMode.json",null, function(data) {
                 console.log(data)
                 if (data.operFlag == 1001) {
                     //					window.location.href="noLink.html?shareInfo="+shareInfo;

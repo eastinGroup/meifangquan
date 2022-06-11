@@ -1,1 +1,58 @@
-{"data":{"projectId":"201800000418","proName":"保利八里翡翠","modeId":null,"modeName":"D","modeFormat":"三室两厅两卫","area":125,"averagePrice":"","firstPay":"","totalPrice":null,"mode3dFlag":"1","modeType":"1","direction":null,"discr":"","saleState":null,"homePageFlag":1,"scanCount":1,"modePics":[],"floorData":[{"modeId":"2018050700000003","floorName":"","modeFloor":1,"fileName":"20180507000000031525680037230.jpg","modifyTime":"2018-05-08 16:55:06"}],"modeHardcover":[]},"shareBean":{"projectId":"","userRoleId":8,"groupId":0,"appType":"9","typeId":"null","type":"1","asedition":null,"base64String":"eyJwcm9qZWN0SWQiOiIiLCJ1c2VyUm9sZUlkIjoiOCIsInR5cGVJZCI6Im51bGwiLCJ0eXBlIjoiMSIsImdyb3VwSWQiOiIwIiwiYXNlZGl0aW9uIjoibnVsbCIsImFwcFR5cGUiOiI5In0="},"operFlag":"1000","contact":"0792-8888066","lxrData":{"userRoleId":0,"roleName":null,"roleEn":null,"roleId":0,"userName":null,"userId":0,"roleType":null,"comePhone":null,"headimg":null,"groupId":0,"groupName":null,"privilegeData":null},"qxData":[]}
+{
+    "data": {
+        "projectId": "201800000418",
+        "proName": "保利八里翡翠",
+        "modeId": null,
+        "modeName": "D",
+        "modeFormat": "三室两厅两卫",
+        "area": 125,
+        "averagePrice": "",
+        "firstPay": "",
+        "totalPrice": null,
+        "mode3dFlag": "1",
+        "modeType": "1",
+        "direction": null,
+        "discr": "",
+        "saleState": null,
+        "homePageFlag": 1,
+        "scanCount": 1,
+        "modePics": [],
+        "floorData": [
+            {
+                "modeId": "2018050700000003",
+                "floorName": "",
+                "modeFloor": 1,
+                "fileName": "20180507000000031525680037230.jpg",
+                "modifyTime": "2018-05-08 16:55:06"
+            }
+        ],
+        "modeHardcover": []
+    },
+    "shareBean": {
+        "projectId": "",
+        "userRoleId": 8,
+        "groupId": 0,
+        "appType": "9",
+        "typeId": "null",
+        "type": "1",
+        "asedition": null,
+        "base64String": "eyJwcm9qZWN0SWQiOiIiLCJ1c2VyUm9sZUlkIjoiOCIsInR5cGVJZCI6Im51bGwiLCJ0eXBlIjoiMSIsImdyb3VwSWQiOiIwIiwiYXNlZGl0aW9uIjoibnVsbCIsImFwcFR5cGUiOiI5In0="
+    },
+    "operFlag": "1000",
+    "contact": "0792-8888066",
+    "lxrData": {
+        "userRoleId": 0,
+        "roleName": null,
+        "roleEn": null,
+        "roleId": 0,
+        "userName": null,
+        "userId": 0,
+        "roleType": null,
+        "comePhone": null,
+        "headimg": null,
+        "groupId": 0,
+        "groupName": null,
+        "privilegeData": null
+    },
+    "qxData": []
+}

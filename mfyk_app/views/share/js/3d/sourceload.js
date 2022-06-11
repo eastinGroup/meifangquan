@@ -1188,11 +1188,13 @@ imageLoadingManger.onLoad = function(item, loaded, total) {
 
 function AllLoaded() {
 
-    RenderOneFrame();
+
 
     if (senceHierarchyJsonHasLoaded && senceInteractiveJsonHasLoaded && allMeshLoaded && allImageHasLoaded) {
         if (wjmloading_HTML)
             wjmloading_HTML.innerHTML = "AllLoaded";
         StartScene();
+
+        RenderOneFrame();
     }
 }

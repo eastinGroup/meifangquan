@@ -16,9 +16,9 @@
  * Created by yuan on 2017/1/20.
  */
 
-var hostname = window.location.hostname; //获取当前页面的url
+var hostname ="localhost"; //获取当前页面的url
 var port = window.location.port; //获取端口
-if (port == "") port = "80";
+if (port == "") port = "5500";
 var config = "http://" + hostname + ":" + port + "/mfyk_app/";
 var url_unity = "http://" + hostname + ":" + port + "/";
 var eventconfig = "http://hn.meifangquan.com/"
